@@ -1,7 +1,7 @@
 {
   "name": "evidence-connector-parquet",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Parquet datasource for Evidence",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

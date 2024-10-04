@@ -14,18 +14,15 @@ export default async (queryString, _, batchSize = 100000) => {
 /** @type {import("@evidence-dev/db-commons").GetRunner<DuckDBOptions>} */
 export const getRunner = ({ options }) => {
 	return async (queryContent, queryPath, batchSize) => {
-		// Filter out non-csv files
-		if (!queryPath.endsWith('.csv')) return null;
-		// Use DuckDBs auto CSV loading
-		// https://duckdb.org/docs/data/csv/overview.html
+		// Filter out non-parquet files
+		if (!queryPath.endsWith('.parquet')) return null;
+		// Use DuckDBs Parquet reading
+		// https://duckdb.org/docs/data/parquet.html
 		const quotedQueryPath = `'${queryPath}'`;
 		const optionsArray = options?.split(',') ?? [];
-		if (!options?.toLowerCase().includes('auto_detect')) {
-			optionsArray.push('auto_detect = true');
-		}
 
 		return runQuery(
-			`SELECT * FROM read_csv(${[quotedQueryPath, ...optionsArray].join(', ')})`,
+			`SELECT * FROM read_parquet(${[quotedQueryPath, ...optionsArray].join(', ')})`,
 			{ filename: ':memory:' },
 			batchSize
 		);
@@ -45,7 +42,7 @@ export const options = {
 	options: {
 		title: 'Options',
 		description:
-			"String passed directly to duckdb's CSV import. See https://duckdb.org/docs/data/csv/overview.html for available configuration",
+			"String passed directly to duckdb's function: read_parquet('file.parquet', <options string>). See https://duckdb.org/docs/data/parquet/overview.html#parameters for available configuration",
 		type: 'string',
 		secret: false,
 		shown: true,
