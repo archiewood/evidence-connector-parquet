@@ -1,5 +1,5 @@
 {
-  "name": "evidence-connector-my-datasource",
+  "name": "evidence-connector-parquet",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -19,7 +19,7 @@
     "@evidence-dev/db-commons": "^1.0.1"
   },
   "evidence": {
-    "datasources": ["my-datasource"]
+    "datasources": [ "parquet" ]
   },
   "keywords": [
     "evidence",
