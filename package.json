@@ -1,6 +1,6 @@
 {
   "name": "evidence-connector-parquet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parquet datasource for Evidence",
   "main": "src/index.js",
   "type": "module",
@@ -20,7 +20,8 @@
     "@evidence-dev/duckdb": "1.0.11"
   },
   "evidence": {
-    "datasources": [ "parquet" ]
+    "datasources": [ "parquet" ],
+    "icon": "Apacheparquet"
   },
   "keywords": [
     "evidence",
